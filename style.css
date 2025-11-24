@@ -1,0 +1,79 @@
+body {
+    background-color: #1a1a2e; 
+    display: flex;
+    flex-direction: column; /* Allow content to stack vertically */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif; /* A slightly more aesthetic font */
+    overflow: hidden;
+    gap: 3rem; /* Space between the two words */
+}
+
+.word-line {
+    display: flex;
+    gap: 0.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+#hello-container {
+    font-size: 5rem;
+}
+
+#nibedita-container {
+    font-size: 8rem; 
+}
+
+.letter {
+    /* Initial style for the letters */
+    color: #ffffff; 
+    display: inline-block; /* Essential for transform (bounce) to work */
+    
+    /* Creating the initial glow effect */
+    text-shadow: 
+        0 0 10px #ff3366, 
+        0 0 20px #ff3366, 
+        0 0 30px #ffffff, 
+        0 0 40px #ff3366;
+
+    /* Combine two animations: Glow and Jiggle */
+    animation: 
+        glow-pulse 3s ease-in-out infinite alternate,
+        jiggle-bounce 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+}
+
+/* 1. KEYFRAMES FOR THE AESTHETIC GLOW PULSE (Same as before) */
+@keyframes glow-pulse {
+    0% {
+        color: #fff0f5; 
+        text-shadow: 
+            0 0 10px #ff6699,
+            0 0 20px #ff6699,
+            0 0 40px #ff3366,
+            0 0 80px #ff3366;
+    }
+    100% {
+        color: #ffc0cb; 
+        text-shadow: 
+            0 0 5px #ff3366,
+            0 0 15px #ff3366,
+            0 0 30px #ff0044,
+            0 0 60px #ff0044;
+    }
+}
+
+/* 2. KEYFRAMES FOR THE JIGGLY PUFF BOUNCE */
+@keyframes jiggle-bounce {
+    0% {
+        transform: translateY(0); /* Start at normal position */
+    }
+    50% {
+        transform: translateY(-10px) scale(1.05); /* Bounce up and slightly enlarge */
+        filter: brightness(1.2); /* Make it momentarily brighter */
+    }
+    100% {
+        transform: translateY(0); /* Return to normal */
+    }
+}
